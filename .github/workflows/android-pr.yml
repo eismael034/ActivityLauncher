@@ -19,12 +19,12 @@ jobs:
     - name: Download dependencies
       run: ./gradlew androidDependencies
     - name: Build debug
-      run: ./gradlew bundleDebug
+      run: ./gradlew assembleDebug
     - name: Upload APK
       uses: actions/upload-artifact@v1
       with:
         name: apk
-        path: .
+        path: ActivityLauncherApp/build/outputs/
   
   deploy:
     needs: build
