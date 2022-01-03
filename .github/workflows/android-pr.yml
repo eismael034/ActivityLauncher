@@ -1,6 +1,7 @@
+
 name: Debug Build for PR
 
-on: [pull_request]
+on: [workflow_dispatch]
 
 jobs:
   build:
@@ -19,3 +20,18 @@ jobs:
       run: ./gradlew androidDependencies
     - name: Build debug
       run: ./gradlew bundleDebug
+    - name: Upload APK
+      uses: actions/upload-artifact@v1
+      with:
+        name: apk
+        path: ${{ github.workspace }}/ActivityLauncher.apk
+  
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Download artifact'
+      uses: actions/download-artifact@v2
+      with:
+        name: ActivityLauncher
+        path: ${{ runner.temp }}
