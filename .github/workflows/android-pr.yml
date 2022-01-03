@@ -24,6 +24,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: Build Artifacts
+        path: .
   
   deploy:
     needs: build
