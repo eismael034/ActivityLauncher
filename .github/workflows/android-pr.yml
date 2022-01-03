@@ -24,7 +24,6 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: Build Artifacts
-        path: ActivityLauncherApp/build/outputs/apk/debug/
   
   deploy:
     needs: build
